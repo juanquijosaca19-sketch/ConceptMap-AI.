@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f7f8fc">
+  <title>ConceptMap AI</title>
+</head>
+<body>
+  <div id="app">
+    <header class="topbar">
+      <a class="brand" href="#"><span class="brand-mark">✳</span><span>ConceptMap <b>AI</b><small>De documentos a ideas visuales</small></span></a>
+      <span class="status"><i></i> Aplicación de escritorio</span>
+    </header>
+    <main class="layout">
+      <section class="intro">
+        <div class="eyebrow">APRENDIZAJE VISUAL</div>
+        <h1>Convierte tus documentos<br><span>en mapas conceptuales.</span></h1>
+        <p>Trabaja desde tu computadora: importa un documento, organiza sus ideas y exporta el mapa.</p>
+      </section>
+      <section class="workspace">
+        <aside class="sidebar">
+          <div class="section-heading"><span class="step">1</span><div><h2>Tu documento</h2><p>PDF, Word, PowerPoint o TXT</p></div></div>
+          <label class="dropzone" id="dropzone" for="fileInput">
+            <span class="upload-icon">↑</span><strong>Arrastra tu archivo aquí</strong><span>o haz clic para buscarlo</span><small>PDF · DOCX · PPTX · TXT</small>
+            <input id="fileInput" type="file" accept=".pdf,.docx,.pptx,.txt">
+          </label>
+          <div id="fileInfo" class="file-info hidden"></div>
+          <div class="field"><label for="mapTitle">Tema central del mapa</label><input id="mapTitle" placeholder="Ej. La fotosíntesis"></div>
+          <div class="field"><label for="detailLevel">Nivel de detalle</label><select id="detailLevel"><option value="4">Breve (4 ideas)</option><option value="6" selected>Medio (6 ideas)</option><option value="8">Ampliado (8 ideas)</option></select></div>
+          <button id="generateBtn" class="primary-btn" disabled>✦ Generar mapa conceptual</button>
+          <p class="hint">Los archivos se procesan localmente en esta versión. Las bibliotecas de lectura se cargan desde Internet.</p>
+          <div class="divider"></div>
+          <div class="section-heading compact"><span class="step">2</span><div><h2>Exportar</h2><p>Guarda tu trabajo</p></div></div>
+          <div class="export-grid"><button id="pngBtn" class="secondary-btn" disabled>↓ PNG</button><button id="svgBtn" class="secondary-btn" disabled>↓ SVG</button><button id="printBtn" class="secondary-btn" disabled>Imprimir / PDF</button></div>
+        </aside>
+        <section class="canvas-panel">
+          <div class="canvas-toolbar"><div><strong>Área de trabajo</strong><span id="mapStatus">Esperando documento</span></div><div class="toolbar-actions"><button id="zoomOut" class="icon-btn" aria-label="Reducir" disabled>−</button><span id="zoomValue">100%</span><button id="zoomIn" class="icon-btn" aria-label="Ampliar" disabled>+</button><button id="resetBtn" class="text-btn" disabled>Restablecer</button></div></div>
+          <div id="mapViewport" class="map-viewport">
+            <div id="emptyState" class="empty-state"><div class="empty-illustration"><div class="bubble bubble-a">Idea</div><div class="bubble bubble-b">Concepto</div><div class="bubble bubble-c">Relación</div><div class="bubble-center">Mapa<br>conceptual</div><span class="connector c1"></span><span class="connector c2"></span><span class="connector c3"></span></div><h3>Tu mapa aparecerá aquí</h3><p>Sube un documento y pulsa <b>Generar mapa conceptual</b>.</p></div>
+            <div id="mapStage" class="map-stage hidden"><svg id="connections" class="connections" aria-hidden="true"></svg><div id="nodes"></div></div>
+          </div>
+          <div class="canvas-footer"><span>✎ Haz doble clic en un concepto para editarlo.</span><span id="conceptCount">0 conceptos</span></div>
+        </section>
+      </section>
+      <section class="how-it-works"><h2>Cómo funciona</h2><div class="steps"><article><span>01</span><h3>Sube</h3><p>Selecciona un documento de estudio.</p></article><article><span>02</span><h3>Analiza</h3><p>Se extrae el texto y se identifican ideas.</p></article><article><span>03</span><h3>Organiza</h3><p>Se crean conceptos conectados.</p></article><article><span>04</span><h3>Exporta</h3><p>Guarda una imagen o imprime a PDF.</p></article></div></section>
+    </main>
+    <footer>ConceptMap AI · Prototipo de escritorio multiplataforma</footer>
+  </div>
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>
